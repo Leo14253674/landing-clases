@@ -143,9 +143,9 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(99,102,241,.2);
-            border: 1px solid rgba(99,102,241,.4);
-            color: #a5b4fc;
+            background: rgba(99,102,241,.25);
+            border: 1px solid rgba(165,180,252,.5);
+            color: #c7d2fe;
             font-size: 13px;
             font-weight: 600;
             padding: 6px 14px;
@@ -177,11 +177,12 @@
             -webkit-text-fill-color: transparent;
         }
         .hero-sub {
-            font-size: 1.1rem;
-            color: #94a3b8;
+            font-size: 1.15rem;
+            color: #e2e8f0;
             margin: 0 0 36px;
-            line-height: 1.6;
+            line-height: 1.7;
             max-width: 540px;
+            font-weight: 500;
         }
         .hero-cta {
             display: inline-flex;
@@ -209,8 +210,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #64748b;
-            font-size: .88rem;
+            color: #cbd5e1;
+            font-size: .92rem;
+            font-weight: 600;
         }
         .hero-schedule svg { color: #10b981; flex-shrink: 0; }
 
@@ -462,7 +464,7 @@
         }
         .cta-guarantee {
             margin-top: 18px;
-            color: #94a3b8;
+            color: #cbd5e1;
             font-size: .83rem;
             display: flex;
             align-items: center;
@@ -472,9 +474,38 @@
 
         /* ── Responsive helpers ── */
         @media (max-width: 640px) {
-            .hero-section { padding: 60px 20px 70px; }
+            .hero-section { padding: 56px 16px 64px; }
+            .hero-title { font-size: clamp(1.75rem, 7vw, 2.4rem); }
+            .hero-sub { font-size: 1rem; }
+            .hero-cta { font-size: .95rem; padding: 14px 24px; width: 100%; justify-content: center; }
+            .hero-schedule { justify-content: center; font-size: .85rem; }
             .bio-content { padding-left: 0; margin-top: 28px; }
-            .bio-stats { gap: 18px; }
+            .bio-stats { gap: 18px; justify-content: center; }
+            .bio-stat-num { font-size: 1.5rem; }
+            .pain-section { padding: 52px 16px; }
+            .learn-section { padding: 56px 16px; }
+            .testi-section { padding: 56px 16px; }
+            .bio-section { padding: 56px 16px; }
+            .cta-final { padding: 60px 16px; }
+            .cta-btn-white { width: 100%; justify-content: center; }
+            .pain-resolution { padding: 24px 20px; }
+            .learn-card { padding: 24px 20px; }
+        }
+        @media (min-width: 641px) and (max-width: 960px) {
+            .hero-section { padding: 70px 32px 80px; }
+            .hero-title { font-size: clamp(2rem, 4.5vw, 2.8rem); }
+            .hero-cta { font-size: .97rem; }
+            .pain-section, .learn-section, .testi-section, .bio-section, .cta-final { padding-left: 32px; padding-right: 32px; }
+            .bio-content { padding-left: 16px; }
+        }
+        /* Centrado global */
+        .hero-section > div,
+        .pain-section > div,
+        .learn-section > div,
+        .testi-section > div,
+        .bio-section > div,
+        .cta-final > div {
+            width: 100%;
         }
 
         /* ── Whatsapp float button ── */
@@ -493,7 +524,27 @@
         }
         .wa-float:hover { transform: scale(1.08); }
 
-        /* Cookie banner spacing */
+        /* ── Section containers ── */
+        .hero-section > div,
+        .pain-section > div,
+        .learn-section > div,
+        .testi-section > div,
+        .bio-section > div,
+        .cta-final > div {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        @media (min-width: 641px) {
+            .hero-section > div,
+            .pain-section > div,
+            .learn-section > div,
+            .testi-section > div,
+            .bio-section > div,
+            .cta-final > div {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
         @media screen and (max-width:480px) { #cookie-consent-banner {bottom:60px} }
         @media screen and (min-width:481px) and (max-width:960px) { #cookie-consent-banner {bottom:80px} }
     </style>
@@ -688,7 +739,7 @@
                             <div class="bio-img-wrap">
                                 <img src="https://bu-cdn.tiendup.com/business/50374/themes/lite/assets/img/o_1iueulmcc2m19lf1pqobqh4m124.jpeg" alt="Leonardo Alaniz">
                                 <div class="bio-img-badge">
-                                    Mentor de ventas<br><span>+ de 5 años en el campo</span>
+                                    Experto en ventas y liderazgo<br><span>+ de 5 años en el campo</span>
                                 </div>
                             </div>
                         </div>
@@ -696,7 +747,7 @@
                             <div class="bio-content">
                                 <span class="section-label">Quién te va a entrenar</span>
                                 <h2>Leonardo Alaniz</h2>
-                                <p class="bio-tagline">Mentor de ventas · Comunicación con autoridad</p>
+                                <p class="bio-tagline">Experto en ventas y liderazgo · Comunicación con autoridad</p>
                                 <p>Ayudo a emprendedores y profesionales a vender con seguridad: sin trabarse al hablar, sin dudar al decir el precio y sin sentir que están molestando.</p>
                                 <p>Después de años trabajando en ventas y liderando equipos, entendí que el problema no es la técnica… <strong>es la seguridad al comunicar.</strong></p>
                                 <p>Por eso creé un entrenamiento práctico para que pases de inseguro a convincente al vender.</p>
