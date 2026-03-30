@@ -265,16 +265,93 @@
   .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.75s ease, transform 0.75s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  /* ── TABLET ── */
   @media (max-width:960px) {
     nav { padding:1rem 2rem; }
     .nav-links { display:none; }
-    .hero, .section, .how-section { padding:5rem 2rem 4rem; }
-    .features-grid { grid-template-columns:1fr; }
-    .steps-layout { grid-template-columns:1fr; gap:2.5rem; }
+    .hero { padding:7rem 2rem 4rem; }
+    .section, .how-section { padding:4rem 2rem; }
+    .features-grid { grid-template-columns:1fr 1fr; }
+    .steps-layout { grid-template-columns:1fr; gap:2rem; }
     .phone-wrap { display:none; }
-    .benefits-grid { grid-template-columns:1fr; }
+    .benefits-grid { grid-template-columns:1fr 1fr; }
     .cta-wrap { padding:0 1.5rem 3rem; }
     footer { padding:2rem; flex-direction:column; text-align:center; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width:600px) {
+    /* nav */
+    nav { padding:0.9rem 1.2rem; }
+    .nav-logo-name { font-size:0.95rem; }
+    .nav-logo-sub { display:none; }
+    .nav-cta { font-size:0.78rem; padding:0.5rem 1.1rem; }
+
+    /* hero */
+    .hero { padding:6rem 1.2rem 3rem; min-height:auto; }
+    .blob-1, .blob-2, .hero-circle { display:none; }
+    .hero-badge { font-size:0.65rem; padding:0.35rem 0.8rem; }
+    h1 { font-size:clamp(2.2rem, 9vw, 3rem); margin-bottom:1rem; }
+    h1 .hl::after { height:6px; bottom:4px; }
+    .hero-sub { font-size:0.95rem; max-width:100%; margin-bottom:2rem; }
+    .hero-actions { flex-direction:column; gap:0.7rem; }
+    .btn-primary, .btn-ghost { width:100%; text-align:center; justify-content:center; padding:0.9rem 1rem; font-size:0.9rem; }
+    .stat-row { gap:1.5rem; flex-wrap:wrap; }
+    .stat-num { font-size:1.8rem; }
+    .stat-label { font-size:0.7rem; }
+    .stat-div { display:none; }
+
+    /* marquee */
+    .marquee-item { font-size:0.72rem; padding:0 1.2rem; }
+
+    /* sections */
+    .section { padding:3rem 1.2rem; }
+    .how-section { padding:3rem 1.2rem; }
+    .section-title { font-size:1.6rem; max-width:100%; }
+    .section-sub { font-size:0.88rem; }
+
+    /* features */
+    .features-grid { grid-template-columns:1fr; gap:0.9rem; }
+    .feature-card { padding:1.5rem; }
+    .feature-icon { width:2.4rem; height:2.4rem; font-size:1.2rem; margin-bottom:0.9rem; }
+    .feature-title { font-size:1rem; }
+    .feature-desc { font-size:0.84rem; }
+
+    /* steps */
+    .step { padding:1.2rem 0; gap:1rem; }
+    .step-num { font-size:2rem; min-width:2.5rem; }
+    .step-content h3 { font-size:0.95rem; }
+    .step-content p { font-size:0.82rem; }
+
+    /* mockup section */
+    #en-accion { padding:3rem 1.2rem !important; }
+    #en-accion > div[style*="display:flex"] { flex-direction:column; align-items:center; gap:2rem; }
+
+    /* benefits */
+    .benefits-grid { grid-template-columns:1fr; gap:0.8rem; }
+    .benefit-card { padding:1.1rem; }
+    .benefit-text strong { font-size:0.86rem; }
+    .benefit-text p { font-size:0.8rem; }
+
+    /* CTA */
+    .cta-wrap { padding:0 1.2rem 3rem; }
+    .cta-section { padding:3.5rem 1.5rem; border-radius:1.2rem; }
+    .cta-title { font-size:1.8rem; }
+    .cta-sub { font-size:0.88rem; }
+    .btn-white { width:100%; justify-content:center; padding:0.9rem 1rem; }
+
+    /* footer */
+    footer { padding:1.5rem 1.2rem; flex-direction:column; align-items:center; text-align:center; gap:0.8rem; }
+    .footer-copy { font-size:0.72rem; }
+  }
+
+  /* ── SMALL MOBILE (320px) ── */
+  @media (max-width:380px) {
+    h1 { font-size:2rem; }
+    .hero-badge { font-size:0.6rem; }
+    .nav-cta { font-size:0.72rem; padding:0.45rem 0.9rem; }
+    .feature-card { padding:1.2rem; }
+    .cta-title { font-size:1.5rem; }
   }
 </style>
 </head>
