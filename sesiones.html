@@ -506,10 +506,6 @@ function openModal(session, price, dur) {
   document.getElementById('modalTitle').textContent = 'Reservar ' + session;
   document.getElementById('modalPrice').textContent = price;
   document.getElementById('modalDur').textContent   = dur;
-  const today = new Date();
-  calYear = today.getFullYear(); calMonth = today.getMonth();
-  selDate = null; selTime = null;
-  renderCal();
   goStep(1, true);
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
