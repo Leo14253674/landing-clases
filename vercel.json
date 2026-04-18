@@ -1,5 +1,14 @@
 {
+  "redirects": [
+    { 
+      "source": "/", 
+      "destination": "https://leonardoalanizok.com/clases",
+      "has": [{ "type": "host", "value": "clases.leonardoalanizok.com" }],
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    { "source": "/clases", "destination": "/index.html" },
     { "source": "/sesiones", "destination": "/sesiones.html" }
   ]
 }
