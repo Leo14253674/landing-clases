@@ -436,42 +436,44 @@
         </div>
       </div>
 
-      <!-- ── STEP 4: Confirmación ── -->
+      <!-- ── STEP 4: Pago pendiente ── -->
       <div id="step4" style="display:none">
-        <div class="confirm-icon">✅</div>
-        <div class="confirm-title">¡Sesión reservada!</div>
-        <p class="confirm-sub">Te enviamos un email con todos los detalles.<br>Tu sesión está confirmada.</p>
-
-        <div class="confirm-box">
-          <div class="confirm-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span id="confirmDate"></span>
+        <div id="step4-paypal" style="display:none">
+          <div class="confirm-icon">⏳</div>
+          <div class="confirm-title">Completá el pago</div>
+          <p class="confirm-sub" style="margin-bottom:20px;">Te abrimos la página de PayPal en una nueva pestaña.<br>Una vez confirmado el pago, te contactamos para coordinar la sesión.</p>
+          <div class="confirm-box">
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="confirmDate"></span></div>
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="confirmTime"></span></div>
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span id="confirmSession"></span></div>
           </div>
-          <div class="confirm-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span id="confirmTime"></span>
+          <div class="confirm-notice" style="margin-top:16px;">
+            🔒 Si la pestaña de PayPal no se abrió, <a id="retryPaypal" href="#" target="_blank" style="color:#6366f1;font-weight:700;">hacé click acá</a>.
           </div>
-          <div class="confirm-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span id="confirmName"></span>
-          </div>
-          <div class="confirm-row">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
-            <span id="confirmSession"></span>
+          <div class="modal-actions" style="margin-top:20px;">
+            <button class="btn-back" onclick="goStep(3)">← Volver al pago</button>
           </div>
         </div>
-
-        <div class="confirm-meet">
-          <div class="confirm-meet-icon">📹</div>
-          <div class="confirm-meet-text">
-            <div class="confirm-meet-label">Link para agendar tu sesión</div>
-            <a class="confirm-meet-link" id="confirmMeetLink" href="#" target="_blank">-</a>
+        <div id="step4-mp" style="display:none">
+          <div class="confirm-icon">💬</div>
+          <div class="confirm-title">¡Casi listo!</div>
+          <p class="confirm-sub" style="margin-bottom:20px;">Te abrimos WhatsApp para coordinar el pago por Mercado Pago.<br>Una vez confirmado, te enviamos todos los detalles de la sesión.</p>
+          <div class="confirm-box">
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="confirmDate2"></span></div>
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="confirmTime2"></span></div>
+            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span id="confirmSession2"></span></div>
+          </div>
+          <div class="confirm-notice" style="margin-top:16px;">
+            💬 Si WhatsApp no se abrió, <a id="retryMp" href="#" target="_blank" style="color:#6366f1;font-weight:700;">hacé click acá</a>.
+          </div>
+          <div class="modal-actions" style="margin-top:20px;">
+            <button class="btn-back" onclick="goStep(3)">← Volver al pago</button>
           </div>
         </div>
-
-        <div class="confirm-notice">
-          📧 <strong>Revisá tu email</strong> — te enviamos los detalles de la sesión a <span id="confirmEmail" style="font-weight:700"></span>. Si no aparece, chequeá la carpeta de spam.
-        </div>
+        <!-- IDs ocultos para compatibilidad -->
+        <span id="confirmName" style="display:none"></span>
+        <span id="confirmEmail" style="display:none"></span>
+        <span id="confirmMeetLink" style="display:none"></span>
       </div>
 
     </div><!-- /modal-body -->
@@ -652,18 +654,29 @@ function validateStep2() {
 
 function payWith(method) {
   const link = PAYMENT_LINKS[method][curSession];
-  window.open(link, '_blank');
-  // Calendar link según sesión
-  const meetLink = CALENDAR_LINKS[curSession];
-  const meetEl = document.getElementById('confirmMeetLink');
-  meetEl.href = meetLink;
-  meetEl.textContent = 'Agendar mi sesión en Google Calendar';
-  // Mostrar confirmación
-  document.getElementById('confirmDate').textContent    = formatDate(selDate) + ' ' + new Date(selDate).getFullYear();
-  document.getElementById('confirmTime').textContent    = selTime + ' hs (hora Argentina)';
-  document.getElementById('confirmName').textContent    = document.getElementById('inputName').value;
-  document.getElementById('confirmSession').textContent = curSession + ' · ' + curDur;
-  document.getElementById('confirmEmail').textContent   = document.getElementById('inputEmail').value;
+  const dateStr = formatDate(selDate) + ' ' + new Date(selDate).getFullYear();
+  const timeStr = selTime + ' hs (hora Argentina)';
+  const sessionStr = curSession + ' · ' + curDur;
+
+  // Ocultar ambos paneles
+  document.getElementById('step4-paypal').style.display = 'none';
+  document.getElementById('step4-mp').style.display = 'none';
+
+  if (method === 'paypal') {
+    window.open(link, '_blank');
+    document.getElementById('step4-paypal').style.display = 'block';
+    document.getElementById('confirmDate').textContent    = dateStr;
+    document.getElementById('confirmTime').textContent    = timeStr;
+    document.getElementById('confirmSession').textContent = sessionStr;
+    document.getElementById('retryPaypal').href = link;
+  } else {
+    window.open(link, '_blank');
+    document.getElementById('step4-mp').style.display = 'block';
+    document.getElementById('confirmDate2').textContent    = dateStr;
+    document.getElementById('confirmTime2').textContent    = timeStr;
+    document.getElementById('confirmSession2').textContent = sessionStr;
+    document.getElementById('retryMp').href = link;
+  }
   goStep(4);
 }
 </script>
