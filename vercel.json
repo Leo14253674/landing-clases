@@ -8,7 +8,8 @@
     }
   ],
   "rewrites": [
-    { "source": "/clases", "destination": "/index-home.html" },
+    { "source": "/", "destination": "/index-home.html" },
+    { "source": "/clases", "destination": "/clases.html" },
     { "source": "/sesiones", "destination": "/sesiones.html" }
   ]
 }
