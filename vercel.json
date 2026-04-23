@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/clases", "destination": "/clases.html" },
-    { "source": "/sesiones", "destination": "/sesiones.html" }
+    { "source": "/clases",             "destination": "/clases.html" },
+    { "source": "/sesiones",           "destination": "/sesiones.html" },
+    { "source": "/gracias-flash",      "destination": "/gracias-flash.html" },
+    { "source": "/gracias-trabajo",    "destination": "/gracias-trabajo.html" },
+    { "source": "/gracias-estrategica","destination": "/gracias-estrategica.html" }
   ]
 }
