@@ -157,7 +157,7 @@
   .booking-summary { background:#F9FAFB; border:1.5px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:20px; font-size:13px; color:var(--text-mid); display:flex; align-items:center; gap:10px; }
   .booking-summary svg { flex-shrink:0; color:var(--violet); }
 
-  /* ── STEP 3: Pago ── */
+  /* ── STEP 2: Pago ── */
   .payment-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
   .pay-card { border:2px solid var(--border); border-radius:16px; padding:20px 16px; cursor:pointer; transition:all .25s; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; background:#fff; }
   .pay-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.1); }
@@ -336,23 +336,14 @@
       <div class="steps-bar" style="margin-top:20px">
         <div class="step-item">
           <div class="step-num active" id="snum1">1</div>
-          <span class="step-label active" id="slbl1">Fecha</span>
+          <span class="step-label active" id="slbl1">Datos</span>
         </div>
         <div class="step-line" id="sline1"></div>
         <div class="step-item">
           <div class="step-num pending" id="snum2">2</div>
-          <span class="step-label pending" id="slbl2">Datos</span>
+          <span class="step-label pending" id="slbl2">Pago</span>
         </div>
-        <div class="step-line" id="sline2"></div>
-        <div class="step-item">
-          <div class="step-num pending" id="snum3">3</div>
-          <span class="step-label pending" id="slbl3">Pago</span>
-        </div>
-        <div class="step-line" id="sline3"></div>
-        <div class="step-item">
-          <div class="step-num pending" id="snum4">✓</div>
-          <span class="step-label pending" id="slbl4">Listo</span>
-        </div>
+
       </div>
     </div>
 
@@ -361,138 +352,47 @@
 
       <!-- ── STEP 1: Calendario ── -->
       <div id="step1">
-        <div class="cal-nav">
-          <button class="cal-arrow" onclick="prevMonth()">‹</button>
-          <span class="cal-month" id="calMonthLabel"></span>
-          <button class="cal-arrow" onclick="nextMonth()">›</button>
+        <div class="form-group">
+          <label class="form-label">Tu nombre</label>
+          <input class="form-input" type="text" id="inputName" placeholder="Ej: Martín González" oninput="validateStep1()">
         </div>
-        <div class="cal-grid" id="calGrid"></div>
-
-        <div id="timePicker" style="display:none">
-          <div class="time-label">Elegí el horario (hora Argentina)</div>
-          <div class="time-grid" id="timeGrid"></div>
+        <div class="form-group">
+          <label class="form-label">Tu email</label>
+          <input class="form-input" type="email" id="inputEmail" placeholder="tu@email.com" oninput="validateStep1()">
         </div>
-
-        <p class="step-hint" id="stepHint">Seleccioná un día disponible</p>
-
         <div class="modal-actions">
           <button class="btn-next" id="btnStep1" onclick="goStep(2)" disabled>Continuar →</button>
         </div>
       </div>
 
-      <!-- ── STEP 2: Datos ── -->
+            <!-- ── STEP 2: Pago ── -->
       <div id="step2" style="display:none">
-        <div class="booking-summary" id="bookingSummary">
+        <div class="booking-summary" id="bookingSummary2">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span id="summaryText"></span>
+          <span id="summaryText2"></span>
         </div>
-        <div class="form-group">
-          <label class="form-label">Tu nombre</label>
-          <input class="form-input" type="text" id="inputName" placeholder="Ej: Martín González" oninput="validateStep2()">
+        <div style="margin:24px 0;">
+          <div class="pay-card paypal" style="max-width:100%;border:2px solid #003087;border-radius:16px;padding:28px 24px;text-align:center;">
+            <div class="pay-logo paypal-logo" style="font-size:2rem;font-weight:800;margin-bottom:8px;">Pay<span>Pal</span></div>
+            <div class="pay-card-label" style="font-weight:700;font-size:1rem;margin-bottom:4px;">Pagá con PayPal</div>
+            <div class="pay-card-sub" style="color:#64748b;font-size:.85rem;margin-bottom:20px;">Tarjeta de crédito, débito o saldo PayPal · Pago seguro</div>
+            <button class="pay-card-btn btn-paypal" style="width:100%;padding:14px;font-size:1rem;" onclick="payWith('paypal')">Pagar con PayPal →</button>
+          </div>
+          <p style="text-align:center;margin-top:16px;font-size:.8rem;color:#94a3b8;">
+            ¿Preferís pagar por Mercado Pago? <a href="#" onclick="payWith('mp');return false;" style="color:#6366f1;font-weight:600;">Coordiná por WhatsApp</a>
+          </p>
         </div>
-        <div class="form-group">
-          <label class="form-label">Tu email</label>
-          <input class="form-input" type="email" id="inputEmail" placeholder="tu@email.com" oninput="validateStep2()">
-        </div>
-        <div class="form-group">
-          <label class="form-label">¿Desde dónde escribís?</label>
-          <select class="form-select" id="inputCountry" onchange="validateStep2()">
-            <option value="">Seleccioná tu país</option>
-            <option value="ar">Argentina 🇦🇷</option>
-            <option value="int">Otro país 🌎</option>
-          </select>
-        </div>
+        <p class="pay-note">🔒 Pagos procesados de forma segura.</p>
         <div class="modal-actions">
           <button class="btn-back" onclick="goStep(1)">← Volver</button>
-          <button class="btn-next" id="btnStep2" onclick="goStep(3)" disabled>Continuar →</button>
         </div>
       </div>
-
-      <!-- ── STEP 3: Pago ── -->
-      <div id="step3" style="display:none">
-        <div class="booking-summary" id="bookingSummary3">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span id="summaryText3"></span>
+        <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:14px 16px;font-size:.82rem;color:#92400e;line-height:1.5;margin-bottom:20px;">
+          ⚠️ <strong>Importante:</strong> enviá el comprobante de pago al WhatsApp <strong>+54 9 2292 215941</strong> dentro de las 24 hs. Sin comprobante, el turno se cancela.
         </div>
-        <div class="payment-grid">
-          <!-- PayPal -->
-          <div class="pay-card paypal">
-            <div class="pay-logo paypal-logo">Pay<span>Pal</span></div>
-            <div class="pay-card-label">PayPal</div>
-            <div class="pay-card-sub">Para pagos internacionales</div>
-            <button class="pay-card-btn btn-paypal" onclick="payWith('paypal')">Pagar con PayPal →</button>
-          </div>
-          <!-- MercadoPago -->
-          <div class="pay-card mp">
-            <div class="pay-logo mp-logo">MP</div>
-            <div class="pay-card-label">Mercado Pago</div>
-            <div class="pay-card-sub">Para pagos desde Argentina · Te contactamos por WhatsApp</div>
-            <button class="pay-card-btn btn-mp" onclick="payWith('mp')">Coordinar pago por WhatsApp →</button>
-          </div>
-        </div>
-        <p class="pay-note">🔒 Pagos procesados de forma segura. Al completar el pago se te enviará la confirmación.</p>
         <div class="modal-actions">
-          <button class="btn-back" onclick="goStep(2)">← Volver</button>
+          <button class="btn-back" onclick="goStep(2)">← Volver al pago</button>
         </div>
-      </div>
-
-      <!-- ── STEP 4: Pago + Agendar ── -->
-      <div id="step4" style="display:none">
-
-        <!-- Panel PayPal -->
-        <div id="step4-paypal" style="display:none">
-          <div class="confirm-icon">⏳</div>
-          <div class="confirm-title">Completá el pago</div>
-          <p class="confirm-sub" style="margin-bottom:20px;">Te abrimos PayPal en una nueva pestaña.<br>Una vez que pagues, agendá tu horario acá abajo.</p>
-          <div class="confirm-box">
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="confirmDate"></span></div>
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="confirmTime"></span></div>
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span id="confirmSession"></span></div>
-          </div>
-          <div class="confirm-meet" style="margin-top:20px;">
-            <div class="confirm-meet-icon">📅</div>
-            <div class="confirm-meet-text">
-              <div class="confirm-meet-label">Paso 2 — Confirmá tu horario en Google Calendar</div>
-              <a class="confirm-meet-link" id="calLinkPaypal" href="#" target="_blank">Agendar mi sesión →</a>
-            </div>
-          </div>
-          <div class="confirm-notice" style="margin-top:16px;">
-            🔒 Si PayPal no se abrió, <a id="retryPaypal" href="#" target="_blank" style="color:#6366f1;font-weight:700;">hacé click acá</a>.
-          </div>
-          <div class="modal-actions" style="margin-top:20px;">
-            <button class="btn-back" onclick="goStep(3)">← Volver al pago</button>
-          </div>
-        </div>
-
-        <!-- Panel WhatsApp/MP -->
-        <div id="step4-mp" style="display:none">
-          <div class="confirm-icon">💬</div>
-          <div class="confirm-title">¡Casi listo!</div>
-          <p class="confirm-sub" style="margin-bottom:20px;">Te abrimos WhatsApp para coordinar el pago.<br>Una vez confirmado, agendá tu horario acá abajo.</p>
-          <div class="confirm-box">
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="confirmDate2"></span></div>
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span id="confirmTime2"></span></div>
-            <div class="confirm-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg><span id="confirmSession2"></span></div>
-          </div>
-          <div class="confirm-meet" style="margin-top:20px;">
-            <div class="confirm-meet-icon">📅</div>
-            <div class="confirm-meet-text">
-              <div class="confirm-meet-label">Paso 2 — Confirmá tu horario en Google Calendar</div>
-              <a class="confirm-meet-link" id="calLinkMp" href="#" target="_blank">Agendar mi sesión →</a>
-            </div>
-          </div>
-          <div class="confirm-notice" style="margin-top:16px;">
-            💬 Si WhatsApp no se abrió, <a id="retryMp" href="#" target="_blank" style="color:#6366f1;font-weight:700;">hacé click acá</a>.
-          </div>
-          <div class="modal-actions" style="margin-top:20px;">
-            <button class="btn-back" onclick="goStep(3)">← Volver al pago</button>
-          </div>
-        </div>
-
-        <!-- IDs para compatibilidad -->
-        <span id="confirmName" style="display:none"></span>
-        <span id="confirmEmail" style="display:none"></span>
-        <span id="confirmMeetLink" style="display:none"></span>
       </div>
 
     </div><!-- /modal-body -->
@@ -526,7 +426,7 @@ const DAYS  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MONTHS= ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
 let curSession = '', curPrice = '', curDur = '';
-let calYear, calMonth, selDate = null, selTime = null;
+
 let currentStep = 1;
 
 function openModal(session, price, dur) {
@@ -535,10 +435,6 @@ function openModal(session, price, dur) {
   document.getElementById('modalTitle').textContent = 'Reservar ' + session;
   document.getElementById('modalPrice').textContent = price;
   document.getElementById('modalDur').textContent   = dur;
-  const today = new Date();
-  calYear = today.getFullYear(); calMonth = today.getMonth();
-  selDate = null; selTime = null;
-  renderCal();
   goStep(1, true);
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -551,154 +447,55 @@ function handleOverlayClick(e) {
   if (e.target === document.getElementById('modalOverlay')) closeModal();
 }
 
-// ── CALENDAR ──────────────────────────────────────────────────────────────
-function renderCal() {
-  const grid = document.getElementById('calGrid');
-  const today = new Date(); today.setHours(0,0,0,0);
-  const first = new Date(calYear, calMonth, 1);
-  const startDay = first.getDay(); // 0=Sun
-  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
-  document.getElementById('calMonthLabel').textContent = MONTHS[calMonth] + ' ' + calYear;
-
-  let html = DAYS.map(d => `<div class="cal-day-name">${d}</div>`).join('');
-
-  for (let i = 0; i < startDay; i++) html += `<div class="cal-day empty"></div>`;
-
-  for (let d = 1; d <= daysInMonth; d++) {
-    const date = new Date(calYear, calMonth, d);
-    const dow = date.getDay();
-    const isPast = date < today;
-    const isWeekend = dow === 0 || dow === 6;
-    const isSelected = selDate && selDate.getDate()===d && selDate.getMonth()===calMonth && selDate.getFullYear()===calYear;
-    const isToday = date.toDateString()===today.toDateString();
-    let cls = 'cal-day';
-    if (isPast || isWeekend) cls += ' disabled';
-    else if (isSelected) cls += ' selected';
-    else if (isToday) cls += ' today';
-    const clickable = !isPast && !isWeekend;
-    html += `<div class="${cls}" ${clickable?`onclick="pickDate(${d})"`:''}>${d}</div>`;
-  }
-  grid.innerHTML = html;
-}
-
-function pickDate(d) {
-  selDate = new Date(calYear, calMonth, d);
-  selTime = null;
-  renderCal();
-  renderTimes();
-  document.getElementById('timePicker').style.display = 'block';
-  document.getElementById('stepHint').textContent = 'Ahora elegí el horario';
-  document.getElementById('btnStep1').disabled = true;
-}
-
-function renderTimes() {
-  const grid = document.getElementById('timeGrid');
-  grid.innerHTML = TIMES.map(t =>
-    `<div class="time-slot${selTime===t?' selected':''}" onclick="pickTime('${t}')">${t} hs</div>`
-  ).join('');
-}
-
-function pickTime(t) {
-  selTime = t;
-  renderTimes();
-  document.getElementById('stepHint').textContent = `✓ ${formatDate(selDate)} a las ${t} hs`;
-  document.getElementById('btnStep1').disabled = false;
-}
-
-function prevMonth() {
-  calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCal();
-}
-function nextMonth() {
-  calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCal();
-}
-
-function formatDate(d) {
-  return `${DAYS[d.getDay()]} ${d.getDate()} de ${MONTHS[d.getMonth()]}`;
-}
-
 // ── STEPS ────────────────────────────────────────────────────────────────
 function goStep(n, init=false) {
-  if (!init) {
-    for (let s=1; s<=4; s++) document.getElementById('step'+s).style.display = 'none';
-  } else {
-    for (let s=1; s<=4; s++) document.getElementById('step'+s).style.display = 'none';
+  for (let s=1; s<=2; s++) document.getElementById('step'+s).style.display = 'none';
+  if (init) {
     document.getElementById('inputName').value = '';
     document.getElementById('inputEmail').value = '';
-    document.getElementById('inputCountry').value = '';
   }
   currentStep = n;
   document.getElementById('step'+n).style.display = 'block';
   updateStepsBar(n);
 
   if (n === 2) {
-    const txt = `${formatDate(selDate)} a las ${selTime} hs · ${curSession}`;
-    document.getElementById('summaryText').textContent = txt;
-    validateStep2();
-  }
-  if (n === 3) {
-    const txt = `${formatDate(selDate)} a las ${selTime} hs · USD ${curPrice}`;
-    document.getElementById('summaryText3').textContent = txt;
+    const txt = curSession + ' · USD ' + curPrice;
+    document.getElementById('summaryText2').textContent = txt;
   }
   document.getElementById('modal').scrollTop = 0;
 }
 
 function updateStepsBar(active) {
-  for (let i=1; i<=4; i++) {
+  for (let i=1; i<=2; i++) {
     const numEl = document.getElementById('snum'+i);
     const lblEl = document.getElementById('slbl'+i);
     if (i < active) {
       numEl.className = 'step-num done'; numEl.textContent = '✓';
       lblEl.className = 'step-label done';
     } else if (i === active) {
-      numEl.className = 'step-num active'; numEl.textContent = i===4?'✓':i;
+      numEl.className = 'step-num active'; numEl.textContent = i===3?'✓':i;
       lblEl.className = 'step-label active';
     } else {
-      numEl.className = 'step-num pending'; numEl.textContent = i===4?'✓':i;
+      numEl.className = 'step-num pending'; numEl.textContent = i===3?'✓':i;
       lblEl.className = 'step-label pending';
     }
   }
-  for (let i=1; i<=3; i++) {
+  for (let i=1; i<=2; i++) {
     const lineEl = document.getElementById('sline'+i);
     if (lineEl) lineEl.className = i < active ? 'step-line done' : 'step-line';
   }
 }
 
-function validateStep2() {
+function validateStep1() {
   const name  = document.getElementById('inputName').value.trim();
   const email = document.getElementById('inputEmail').value.trim();
-  const country = document.getElementById('inputCountry').value;
-  const valid = name.length > 1 && email.includes('@') && country !== '';
-  document.getElementById('btnStep2').disabled = !valid;
+  const valid = name.length > 1 && email.includes('@') && email.includes('.');
+  document.getElementById('btnStep1').disabled = !valid;
 }
 
 function payWith(method) {
   const payLink = PAYMENT_LINKS[method][curSession];
-  const calLink = CALENDAR_LINKS[curSession];
-  const dateStr = formatDate(selDate) + ' ' + new Date(selDate).getFullYear();
-  const timeStr = selTime + ' hs (hora Argentina)';
-  const sesStr  = curSession + ' · ' + curDur;
-
   window.open(payLink, '_blank');
-
-  document.getElementById('step4-paypal').style.display = 'none';
-  document.getElementById('step4-mp').style.display = 'none';
-
-  if (method === 'paypal') {
-    document.getElementById('step4-paypal').style.display = 'block';
-    document.getElementById('confirmDate').textContent    = dateStr;
-    document.getElementById('confirmTime').textContent    = timeStr;
-    document.getElementById('confirmSession').textContent = sesStr;
-    document.getElementById('calLinkPaypal').href = calLink;
-    document.getElementById('retryPaypal').href   = payLink;
-  } else {
-    document.getElementById('step4-mp').style.display = 'block';
-    document.getElementById('confirmDate2').textContent    = dateStr;
-    document.getElementById('confirmTime2').textContent    = timeStr;
-    document.getElementById('confirmSession2').textContent = sesStr;
-    document.getElementById('calLinkMp').href = calLink;
-    document.getElementById('retryMp').href   = payLink;
-  }
-  goStep(4);
 }
 </script>
 </body>
