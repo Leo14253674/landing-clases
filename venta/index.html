@@ -267,13 +267,14 @@
     /* Module poster image — fills top portion */
     .module-visual {
       width:100%; overflow:hidden;
-      aspect-ratio:9/10;
+      aspect-ratio:9/16;
       position:relative;
     }
     .module-visual img {
-      width:100%; height:100%; object-fit:cover;
+      width:100%; height:100%; object-fit:contain;
       object-position:top center;
       display:block;
+      background:#000;
       transition:transform .4s;
     }
     .module-card:hover .module-visual img { transform:scale(1.03); }
