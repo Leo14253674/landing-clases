@@ -612,7 +612,16 @@
   <div style="max-width:1100px;margin:0 auto;text-align:center;">
     <span class="sec-tag">Todo en un solo lugar</span>
     <h2 class="sec-title" style="margin-bottom:40px;">Todo lo que necesitás para<br>comunicar, practicar y vender con seguridad.</h2>
-    <img src="https://raw.githubusercontent.com/Leo14253674/landing-clases/main/venta/Pack_movil.png" alt="El Bambú - Todo lo que necesitás" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto;border-radius:16px;">
+    <style>
+  .pack-img-desktop { display:block; }
+  .pack-img-mobile  { display:none;  }
+  @media (max-width: 768px) {
+    .pack-img-desktop { display:none;  }
+    .pack-img-mobile  { display:block; }
+  }
+</style>
+<img class="pack-img-desktop" src="Pack_bambu.png" alt="El Bambú - Todo lo que necesitás" style="width:100%;max-width:960px;height:auto;display:block;margin:0 auto;border-radius:16px;">
+<img class="pack-img-mobile"  src="Pack_movil.png" alt="El Bambú - Todo lo que necesitás" style="width:100%;height:auto;display:block;margin:0 auto;border-radius:16px;">
   </div>
 </div>
 
